@@ -107,7 +107,9 @@ fn warn_internal(
 
     if flags.contains(Flags::ONCE) && state.contains(State::WARNING_EMITTED) {
         return Ok(());
-    }
+    } else {
+        state.insert(State::WARNING_EMITTED);
+    };
 
     let allow_msg = if state.contains(State::ALLOW_MSG_EMITTED) {
         String::new()
